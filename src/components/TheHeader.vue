@@ -26,7 +26,19 @@ const handleClick = () => {
 </script>
 
 <template>
-  <header><Button label="Team" variant="link" @click="handleClick" /></header>
+  <header class="flex items-center justify-between pl-4 pr-4">
+    <span>Pokedex</span>
+    <Button label="Team" variant="link" @click="handleClick" class="ml-auto" />
+  </header>
 </template>
 
-<style scoped></style>
+<style scoped>
+header {
+  background-color: #8b0000;
+  box-shadow: 0 9px #5e0000;
+  -webkit-box-shadow: 0 9px #5e0000;
+  -moz-box-shadow: 0 9px #5e0000;
+  -o-box-shadow: 0 9px #5e0000;
+  color: white;
+}
+</style>

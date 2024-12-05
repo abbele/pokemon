@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container ml-auto mr-auto">
     <slot></slot>
   </div>
 </template>
@@ -8,7 +8,7 @@
 @media (min-width: 1280px) {
   .container {
     max-width: 1200px;
-    margin: auto;
+    margin: 0 auto;
   }
 }
 </style>

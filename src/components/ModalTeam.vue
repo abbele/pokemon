@@ -76,13 +76,13 @@ const handleClose = () => {
 
 <template>
   <Form @submit="handleSubmit">
-    <span class="text-surface-500 dark:text-surface-400 block mb-8">Crea la tua squadra</span>
+    <span class="text-surface-500 dark:text-surface-400 block mb-8">Create your team</span>
     <div class="flex items-center gap-4 mb-4">
-      <label for="name" class="font-semibold w-24">Nome</label>
+      <label for="name" class="font-semibold w-24">Name</label>
       <InputText id="name" name="name" class="flex-auto" autocomplete="off" />
     </div>
     <div class="flex items-center gap-4 mb-8">
-      <label for="description" class="font-semibold w-24">Descrizione</label>
+      <label for="description" class="font-semibold w-24">Description</label>
       <InputText id="description" name="description" class="flex-auto" autocomplete="off" />
     </div>
     <div class="flex justify-end gap-2">

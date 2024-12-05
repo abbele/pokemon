@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Card from 'primevue/card'
 import Button from 'primevue/button'
+import Chip from 'primevue/chip'
 
 import router from '@/router'
 import type { IPokemon } from '@/types/pokemon'
@@ -54,20 +55,18 @@ const handleAddToTeam = (item: IPokemon) => {
     <div class="grid-container">
       <Card class="grid-item" v-for="item in list" :key="item.id">
         <template #header>
-          <img :src="item.sprites.front_default" :alt="item.name" />
+          <img class="hover:scale-150" :src="item.sprites.front_default" :alt="item.name" />
         </template>
         <template #title>
           {{ item.name }}
         </template>
         <template #content>
-          <ul>
-            <li v-for="(type, index) in item.types" :key="index">
-              {{ type }}
-            </li>
-          </ul>
+          <div class="flex gap-1">
+            <Chip v-for="(type, index) in item.types" :key="index" :label="type" />
+          </div>
         </template>
         <template #footer>
-          <div class="flex gap-4 mt-1">
+          <div class="mt-1">
             <Button
               label="Detail"
               severity="secondary"
@@ -78,7 +77,7 @@ const handleAddToTeam = (item: IPokemon) => {
             <Button
               label="Add to team"
               severity="success"
-              class="w-full"
+              class="w-full mt-1"
               @click="() => handleAddToTeam(item)"
             />
           </div>

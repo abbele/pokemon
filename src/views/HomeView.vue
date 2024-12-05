@@ -24,25 +24,13 @@ watch(filters, () => {
 </script>
 
 <template>
-  <div class="root">
-    <TheContainer>
+  <div class="root h-full m-auto p-5">
+    <TheContainer class="h-full overflow-scroll">
       <PokedexListFilters :name="filters.name" @update:name="handleFilters" />
-      <PokedexList :list="pokemonList" @fetchMore="loadMore" />
+      <div class="overflow-scroll mt-5 mb-5 h-full">
+        <PokedexList :list="pokemonList" @fetchMore="loadMore" />
+      </div>
       <TheObserver @enter-viewport="loadMore" />
     </TheContainer>
   </div>
 </template>
-
-<style scoped>
-.root {
-  height: 100%;
-  overflow: scroll;
-  margin: auto;
-}
-
-.root > div {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-</style>
