@@ -156,7 +156,4 @@ const handleRemoveTeam = () => {
   margin: auto;
   padding: 25px;
 }
-.custom-slide {
-  transition: all 0.3s ease-in-out;
-}
 </style>
