@@ -14,6 +14,9 @@ import ModalTeam from '@/components/ModalTeam.vue'
 import { useModalStore } from '@/stores/modal'
 import { useNotificationStore } from '@/stores/notification'
 import TheContainer from '@/components/TheContainer.vue'
+import { removeLocalStorage } from '@/services/local-storage'
+import { LOCAL_STORAGE_TEAM, POKEMON } from '@/constants/url'
+import router from '@/router'
 
 const { id } = defineProps({
   id: String,
@@ -50,14 +53,6 @@ const handleUpdate = () => {
   })
 }
 
-// Track active index
-const activeIndex = ref(0)
-
-// Update active index when page changes
-const onPageChange = (page: number) => {
-  activeIndex.value = page
-}
-
 const responsiveOptions = ref([
   {
     breakpoint: '1280px',
@@ -75,6 +70,11 @@ const responsiveOptions = ref([
     numScroll: 1,
   },
 ])
+
+const handleRemoveTeam = () => {
+  removeLocalStorage(LOCAL_STORAGE_TEAM)
+  router.push(POKEMON.base())
+}
 </script>
 
 <template>
@@ -96,7 +96,8 @@ const responsiveOptions = ref([
           </Card>
         </div>
         <div class="text-right">
-          <Button label="Update" severity="danger" class="mt-2" @click="handleUpdate" />
+          <Button label="Update" severity="primary" class="mt-2 mr-2" @click="handleUpdate" />
+          <Button label="Remove" severity="danger" class="mt-2" @click="handleRemoveTeam" />
         </div>
       </Fieldset>
       <div class="w-full max-w-4xl mx-auto p-4">
@@ -106,7 +107,6 @@ const responsiveOptions = ref([
           :numScroll="1"
           :circular="true"
           :responsiveOptions="responsiveOptions"
-          @update:page="onPageChange"
         >
           <template #item="slotProps">
             <div
